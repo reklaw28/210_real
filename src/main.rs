@@ -22,6 +22,6 @@ fn read_file(path: &str) -> Vec<(String, String)> {
 
 	let data = read_file("C:\\Users\\sirbu\\Downloads\\DS_210_lectures\\homeworks\\Final_project\\make_graph\\Final_Data.csv");
 
-	println!("{:?}",data[0] );
+	println!("{:?}",data[1] );
 
 }
