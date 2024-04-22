@@ -73,6 +73,7 @@ fn main() {
     }// making sure we have every key
 
 
+    println!("{:?}",vec_of_vertex.len() );
 
 
     let mut adjacency_list: Vec<(String, Vec<(String,i32)>)> = vec![];
@@ -123,6 +124,13 @@ fn main() {
     	}
     }
     println!("{:?}",count );// this is close to what it should be 
+
+    let mut ident_mat: Vec<Vec<f32>> = vec![vec![0.0; 1212]; 1212];//making an identity matrix for later lin alg
+    for i in 0..1212{
+    	ident_mat[i][i] = 1.0;
+    }
+
+
     }
 
 
