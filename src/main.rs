@@ -150,7 +150,7 @@ fn main() {
     }
 
 
-    let walks = 12120;
+    let walks = 121200;
     let steps_per_walk = 10000; // Number of steps per random walk
     let mut probabilities = vec![0; walks]; // Initialize probabilities for each vertex
     let size = adjacency_list.len();
@@ -210,6 +210,7 @@ fn main() {
     let mut prob_vec: Vec<(usize,usize)> = vec![];
     for (vertex, prob) in probabilities.iter().enumerate() {
     	prob_vec.push((*prob,vertex)); //invert how would normally store bc of tuple ordering
+
     }
 
     for i in prob_vec{
