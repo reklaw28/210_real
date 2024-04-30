@@ -6,6 +6,7 @@ use std::io;
 use rand::Rng;
 use std::cmp;
 use std::collections::BinaryHeap;
+mod open;
 
 
 type Vertex = String;
@@ -21,42 +22,12 @@ struct point{
 	weight: i32,
 }
 
-fn read_file(path: &str) -> ListOfEdges {
-    let mut result: ListOfEdges = Vec::new();
-    let file = File::open(path).expect("Could not open file");
-    let buf_reader = BufReader::new(file).lines();
-    for line in buf_reader {
-        let line_str = line.expect("Error reading");
-        let v: Vec<&str> = line_str.trim().split(',').collect();
-        let x = v[0].to_string();
-        let y = v[1].to_string();
-        result.push((x, y));
-    }
-    result
-}
 
 //create a function that adds the absolute minimum to all of the positve records on a duplicate copy then use those vals as the rand num gen
 
-fn min(x: &[(String, i32)]) -> i32 {
-    x.iter().fold(i32::MAX, |min_val, (_, val)| cmp::min(min_val, *val))
-}
-
-fn max(x: &[(String, i32)]) -> i32{
-	x.iter().fold(i32::MAX, |max_val,(_,val)| cmp::max(max_val, *val))
-}
-
-fn scale(mut x: Vec<(String, i32)>, min_val: i32) -> Vec<(String, i32)> {
-    for mut i in & mut x{
-    	if i.1 >0{
-    		i.1 = i.1+(min_val*min_val);
-    		
-    	}
-    }
-    return x.to_vec()
-}
 
 fn main() {
-    let data = read_file("C:\\Users\\sirbu\\Downloads\\DS_210_lectures\\homeworks\\Final_project\\make_graph\\Final_Data.csv");
+    let data = crate::open::read_file("C:\\Users\\sirbu\\Downloads\\DS_210_lectures\\homeworks\\Final_project\\make_graph\\Final_Data.csv");
 
 
     let mut all_point = vec![];
@@ -161,9 +132,9 @@ fn main() {
         let mut current_vertex = rand::thread_rng().gen_range(0..size);
 
         let mut temp = &mut adjacency_list[current_vertex]; // making pos values more heavily weighte
-        let min = min(&temp.1);
-    	let temp2 = scale(temp.1.clone(), min); // gives sevre prefernece to postive / wins
-    	let max = max(&temp2);
+        let min = crate::open::min(&temp.1);
+    	let temp2 = crate::open::scale(temp.1.clone(), min); // gives sevre prefernece to postive / wins
+    	let max = crate::open::max(&temp2);
         for _ in 0..steps_per_walk {
             let jump = rand::thread_rng().gen_range(min..=max) as u8; // Random jump probability
             let mut store: Vec<(String, i32)> = vec![]; // so we can only itterate through strictly pos or negative entries 
