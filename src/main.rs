@@ -150,7 +150,7 @@ fn main() {
     }
 
 
-    let walks = 121200;
+    let walks = 12120;
     let steps_per_walk = 10000; // Number of steps per random walk
     let mut probabilities = vec![0; walks]; // Initialize probabilities for each vertex
     let size = adjacency_list.len();
