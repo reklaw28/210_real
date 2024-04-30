@@ -19,7 +19,6 @@ type AdjacencyLists = Vec<Vec<Vertex>>;
 struct point{
 	WIN: String,
 	LOSS: String,
-	weight: i32,
 }
 
 
@@ -35,7 +34,6 @@ fn main() {
     	let mut a = point{
     		WIN: (*i.0).to_string(),
     		LOSS: (*i.1).to_string(),
-    		weight: 1,
     	};
     	all_point.push(a);
     }
