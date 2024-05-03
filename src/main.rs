@@ -24,10 +24,11 @@ fn main() {
         count += 1;
     }
 
-    let walks = 1212;
-    let steps_per_walk = 1000; // Number of steps per random walk
-    let mut probabilities = vec![0; walks]; // Initialize probabilities for each vertex
+    let walks = 12120;
+    let steps_per_walk = 10000; // Number of steps per random walk
     let size = adjacency_list.len();
+    let mut probabilities = vec![0; size]; // Initialize probabilities for each vertex
+    
 
     for _ in 0..walks {
         let mut current_vertex = rand::thread_rng().gen_range(0..size);
