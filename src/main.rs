@@ -24,15 +24,8 @@ fn main() {
         count += 1;
     }
 
-    let mut count = 0;
-    for i in &adjacency_list {
-        for j in &i.1 {
-            count += j.1;
-        }
-    }
-
-    let walks = 12120;
-    let steps_per_walk = 10000; // Number of steps per random walk
+    let walks = 1212;
+    let steps_per_walk = 1000; // Number of steps per random walk
     let mut probabilities = vec![0; walks]; // Initialize probabilities for each vertex
     let size = adjacency_list.len();
 
