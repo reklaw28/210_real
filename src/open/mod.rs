@@ -109,3 +109,47 @@ pub fn ad_list (x: Vec<point>) -> (Vec<(String, Vec<(String,i32)>)>){
     }
     return adjacency_list
 }
+
+#[cfg(test)]
+#[test]
+fn graph_right(){
+    let data = read_file("C:\\Users\\sirbu\\Downloads\\DS_210_lectures\\homeworks\\Final_project\\make_graph\\Final_Data.csv");
+    let mut all_point = vec![];
+    for i in &data{
+        let a = point{
+            WIN: (*i.0).to_string(),
+            LOSS: (*i.1).to_string(),
+        };
+        all_point.push(a);
+    }
+
+    let mut adjacency_list = ad_list(all_point);
+    let mut score: i32 = 0;
+
+    for i in adjacency_list{
+        for j in i.1{
+            score+=j.1;
+        }
+    }
+    assert_eq!( 0,score );
+}
+#[test]
+fn scale_right(){
+    let data = read_file("C:\\Users\\sirbu\\Downloads\\DS_210_lectures\\homeworks\\Final_project\\make_graph\\test.csv");
+    let mut all_point = vec![];
+    for i in &data{
+        let a = point{
+            WIN: (*i.0).to_string(),
+            LOSS: (*i.1).to_string(),
+        };
+        all_point.push(a);
+    }
+
+    let mut adjacency_list = ad_list(all_point);
+    for i in &mut adjacency_list{
+            let min_val = min(&i.1);
+            scale((i.1).clone(), min_val);
+
+    }
+    assert_eq!( -2,adjacency_list[0].1[1].1, "should be {} and is {}",-2, adjacency_list[0].1[1].1);
+}
