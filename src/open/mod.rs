@@ -144,12 +144,14 @@ fn scale_right(){
         };
         all_point.push(a);
     }
+    let mut scal = vec![];
 
     let mut adjacency_list = ad_list(all_point);
     for i in &mut adjacency_list{
             let min_val = min(&i.1);
-            scale((i.1).clone(), min_val);
+            let scaler = (i.1).clone();
+            scal = scale(scaler, min_val);
 
     }
-    assert_eq!( -2,adjacency_list[0].1[1].1, "should be {} and is {}",-2, adjacency_list[0].1[1].1);
+    assert_eq!( -4,scal[0].1, "should be {} and is {}",-2, scal[0].1);
 }
