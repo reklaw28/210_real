@@ -4,7 +4,7 @@ use std::collections::BinaryHeap;
 mod open;
 
 fn main() {
-    let data = crate::open::read_file("C:\\Users\\sirbu\\Downloads\\DS_210_lectures\\homeworks\\Final_project\\make_graph\\Final_Data.csv");
+    let data = crate::open::read_file("C:\\Users\\sirbu\\Downloads\\sorted_data_real.csv");
 
     let mut all_point = vec![];
     for i in &data {
@@ -105,11 +105,12 @@ fn main() {
         prob_heap.push(i);//adding to binary heap to sort
     }
     let mut finale: Vec<(usize, usize)> = vec![];
-    for _ in 0..15 {
-        finale.push(prob_heap.pop().unwrap()); //finding the top 5 best from our random selection and adding them
+    for _ in 0..400 {
+        finale.push(prob_heap.pop().unwrap()); //finding the top 400 best from our random selection and adding them
     }
-
+    let mut count = 1;
     for i in finale {
-        println!("Vertice = {:?}, and prob/rank = {:.4}", adjacency_list[i.1].0, (i.0 as f64) / (walks * steps_per_walk) as f64);//printing the top 5
+        println!("Vertice = {:?}, and prob/rank = {:.4}, rank ={:?}", adjacency_list[i.1].0, (i.0 as f64) / (walks * steps_per_walk) as f64, count);//printing the top 5
+        count += 1;
     }
 }
